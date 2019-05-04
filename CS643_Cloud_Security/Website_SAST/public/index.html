@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="simpleUpload.min.js"></script>
+    <script src="jquery.json-viewer.js"></script>
+    <link href="jquery.json-viewer.css" type="text/css" rel="stylesheet">
+
+    <!--highlightjs-->
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript">
+
+        var results = [];
+        var formatedResult = {};
+        var completed = 0;
+
+        function displayFileContent(file) {
+            var reader = new FileReader();
+            reader.readAsText(file, "UTF-8");
+            reader.onload = function (evt) {
+                $('.js').html(evt.target.result);
+                $('pre code').each(function(i, block) {
+                    hljs.highlightBlock(block);
+                });
+            };
+
+            reader.onerror = function (evt) {
+                $('.js').html("Error reading file");
+            };
+        }
+
+        function downLoadResult() {
+            var responseString  = 'data:application/octet-stream;charset=utf-8,' + JSON.stringify(results);
+            var encodedUri = encodeURI(responseString);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "result.json");
+            document.body.appendChild(link); // Required for FF
+
+            link.click(); // This will download the data file named "my_data.csv".
+        }
+        
+        function showAccumulatedResult() {
+            var finalJson = {};
+
+            $.each(formatedResult.jslint, function(k, v) {
+                finalJson[k] = {};
+                finalJson[k].count = 1;
+                finalJson[k].tools = ['jslint'];
+                finalJson[k].details = {};
+                finalJson[k].details.jslint = v;
+
+            });
+
+            $.each(formatedResult.eslint, function(k, v) {
+                if(finalJson[k]) {
+                    finalJson[k].count = finalJson[k].count + 1;
+                    finalJson[k].tools.push('eslint');
+                    finalJson[k].details.eslint = v;
+                } else {
+                    finalJson[k] = {};
+                    finalJson[k].count = 1;
+                    finalJson[k].tools = ['eslint'];
+                    finalJson[k].details = {};
+                    finalJson[k].details.eslint = v;
+                }
+            });
+
+            $.each(formatedResult.jshint, function(k, v) {
+                if(finalJson[k]) {
+                    finalJson[k].count = finalJson[k].count + 1;
+                    finalJson[k].tools.push('jshint');
+                    finalJson[k].details.jshint = v;
+                } else {
+                    finalJson[k] = {};
+                    finalJson[k].count = 1;
+                    finalJson[k].tools = ['jshint'];
+                    finalJson[k].details = {};
+                    finalJson[k].details.jshint = v;
+                }
+            });
+
+            $.each(formatedResult.jsprime, function(k, v) {
+                if(finalJson[k]) {
+                    finalJson[k].count = finalJson[k].count + 1;
+                    finalJson[k].tools.push('jsprime');
+                    finalJson[k].details.jsprime = v;
+                } else {
+                    finalJson[k] = {};
+                    finalJson[k].count = 1;
+                    finalJson[k].tools = ['jsprime'];
+                    finalJson[k].details = {};
+                    finalJson[k].details.jsprime = v;
+                }
+            });
+
+            $('.accumulated').jsonViewer(finalJson, {collapsed: true, withQuotes: true});
+            $('.acc-container').removeClass('hide');
+        }
+
+        $(document).ready(function(){
+            $('input[type=file]').change(function() {
+
+                var objFormData = new FormData();
+                // GET FILE OBJECT
+                var objFile = $(this)[0].files[0];
+                // APPEND FILE TO POST DATA
+                displayFileContent(objFile);
+
+                objFormData.append('file', objFile);
+                $.ajax({
+                    /*jslint*/
+                    url: 'http://ec2-52-201-255-34.compute-1.amazonaws.com:8083/upload',
+                    type: 'POST',
+                    contentType: false,
+                    data: objFormData,
+                    //JQUERY CONVERT THE FILES ARRAYS INTO STRINGS.SO processData:false
+                    processData: false,
+                    success: function(data) {
+                        var dataObj = JSON.parse(data);
+                        if (dataObj.error) {
+
+                            var jsLintResult = {};
+                            for(var i = 0; i < dataObj.error.length; ++i)
+                            {
+                                if (jsLintResult[dataObj.error[i].line]) {
+                                    var prev = jsLintResult[dataObj.error[i].line];
+                                    jsLintResult[dataObj.error[i].line + 1] = prev + ',' + dataObj.error[i].message;
+                                } else {
+                                    jsLintResult[dataObj.error[i].line + 1] = dataObj.error[i].message;
+                                }
+
+                            }
+
+                            formatedResult.jslint = jsLintResult;
+
+                        }
+                        results.push(dataObj);
+                        $('.js-lint').jsonViewer(dataObj, {collapsed: true, withQuotes: true});
+                        $('.results-container .resultsCls').removeClass('hide');
+                    },
+
+                    complete: function(data) {
+                        completed++;
+                        if (completed == 4) {
+                            showAccumulatedResult();                           
+                        }
+                    }
+                });
+
+                $.ajax({
+                    /*jshint*/
+                    url: 'http://ec2-52-201-255-34.compute-1.amazonaws.com:8084/upload',
+                    type: 'POST',
+                    contentType: false,
+                    data: objFormData,
+                    //JQUERY CONVERT THE FILES ARRAYS INTO STRINGS.SO processData:false
+                    processData: false,
+                    success: function(data) {
+                        var dataObj = JSON.parse(data);
+
+                        if (dataObj.error) {
+
+                            var jsHintResult = {};
+                            for(var i = 0; i < dataObj.error.length; ++i)
+                            {
+                                if (jsHintResult[dataObj.error[i].line]) {
+                                    var prev = jsHintResult[dataObj.error[i].line];
+                                    jsHintResult[dataObj.error[i].line] = prev + ',' + dataObj.error[i].reason;
+                                } else {
+                                    jsHintResult[dataObj.error[i].line] = dataObj.error[i].reason;
+                                }
+
+                            }
+
+                            formatedResult.jshint = jsHintResult;
+
+                        }
+
+                        results.push(dataObj);
+
+                        $('.js-hint').jsonViewer(dataObj, {collapsed: true, withQuotes: true});
+                        $('.results-container .resultsCls').removeClass('hide');
+                    }, complete: function(data) {
+                        completed++;
+                        if (completed == 4) {
+                            showAccumulatedResult();
+                        }
+                    }
+                });
+
+                $.ajax({
+                    /*es-lint*/
+                    url: 'http://ec2-52-201-255-34.compute-1.amazonaws.com:8082/upload',
+                    type: 'POST',
+                    contentType: false,
+                    data: objFormData,
+                    //JQUERY CONVERT THE FILES ARRAYS INTO STRINGS.SO processData:false
+                    processData: false,
+                    success: function(data) {
+                        var dataObj = JSON.parse(data);
+
+                        var esLintResult = {};
+
+                        if (dataObj.error && dataObj.error.results) {
+
+                            for(var iCounter = 0; iCounter < dataObj.error.results.length; ++iCounter)
+                            {
+                                var messages = dataObj.error.results[iCounter].messages;
+                                for(var jCounter = 0; jCounter < messages.length; jCounter++) {
+                                    if (esLintResult[messages[jCounter].line]) {
+                                        var prev =  esLintResult[messages[jCounter].line];
+                                        esLintResult[messages[jCounter].line] = prev + ', '
+                                            + messages[jCounter].message;
+                                    } else {
+                                        esLintResult[messages[jCounter].line] = messages[jCounter].message;
+                                    }
+                                }
+
+                            }
+
+                            //formatedResult['eslint'] = esLintResult;
+                            formatedResult.eslint = esLintResult;
+
+                        }
+
+                        results.push(dataObj);
+
+                        $('.es-lint').jsonViewer(dataObj, {collapsed: true, withQuotes: true});
+                        $('.results-container .resultsCls').removeClass('hide');
+                    },
+                    complete: function(data) {
+                        completed++;
+                        if (completed == 4) {
+                            showAccumulatedResult();
+                        }
+                    }
+                });
+
+
+
+                var  objForDataForJsPrime =  new FormData();
+                objForDataForJsPrime.append('filetoupload', objFile);
+
+                $.ajax({
+                    /*jsprime*/
+                    url: 'http://ec2-52-201-255-34.compute-1.amazonaws.com:8086/fileupload',
+                    type: 'POST',
+                    contentType: false,
+                    data: objForDataForJsPrime,
+                    //JQUERY CONVERT THE FILES ARRAYS INTO STRINGS.SO processData:false
+                    processData: false,
+                    success: function(data) {
+                        console.log('jsprime  result  from  server');
+                        console.log(data);
+
+                        var jsprimeResult = {};
+
+                        var map = data.badThings;
+
+                        $.each(map, function (key, value) {
+                            jsprimeResult[key] = value;
+                        });
+
+                        formatedResult.jsprime = jsprimeResult;
+
+
+                        results.push(data);
+
+                        $('.js-prime').jsonViewer(data, {collapsed: true, withQuotes: true});
+                        $('.results-container .resultsCls').removeClass('hide');
+                    },
+                    complete: function(data) {
+                        completed++;
+                        if (completed == 4) {
+                            showAccumulatedResult();
+                        }
+                    }
+                });
+            });
+
+        });
+
+    </script>
+
+    <style>
+        .results-container .resultsCls.hide, .acc-container.hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="data-container">
+    <input id="jsFileID" type="file" name="file">
+
+    <div id="error"></div>
+
+    <pre><code class="js"></code></pre>
+
+    <pre id="json-renderer"><code class="js-lint"></code><code class="js-hint"></code><code class="es-lint"></code><code class="js-prime"></code> </pre>
+
+</div>
+
+<div class="acc-container hide">
+    <span>Accumulated Result</span>
+    <pre id="json-renderer1"><code class="accumulated"></code></pre>
+</div>
+<div class="results-container">
+    <span>
+        <a href="#" class="resultsCls hide" onclick="downLoadResult()">Results</a>
+    </span>
+</div>
+
+</body>
+</html>

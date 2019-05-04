@@ -1,0 +1,30 @@
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# absolute paths #
+##################
+/CS621_Adv_Web/whoisthis.band-team-project/htdocs/info/
+/CS643_Cloud_Security/Website_SAST/node_modules/
+

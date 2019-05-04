@@ -1,0 +1,32 @@
+'use strict';
+
+console.log('Loading function');
+
+var AWS = require('aws-sdk');
+AWS.config.update({region: 'us-east-1'});
+
+exports.handler = (event, context, callback) => {
+    var lambda = new AWS.Lambda({region: 'us-east-1', apiVersion: '2015-03-31'});
+	var params = {
+  		FunctionName : 'iotbutton_G030JF057335TT72_iot-button-sms-python',
+  		InvocationType : 'RequestResponse',
+  		LogType : 'None'
+        },
+        index,
+        N = 10,
+        err = function(error, data) {
+  			if (error) {
+    			console.log(error);
+  			} else {
+    			console.log("Items sucdessfully created!");
+  			}
+		};    
+       
+      
+	for (index = 0; index < N; index++) {
+	    lambda.invoke(params, err);
+     }
+    
+    callback(null, "Sucessfully invoked iotPython lambda");
+};
+

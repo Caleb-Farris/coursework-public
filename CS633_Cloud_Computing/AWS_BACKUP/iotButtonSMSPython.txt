@@ -1,0 +1,132 @@
+'''
+This is a sample Lambda function that sends an SMS on click of a
+button. It needs one permission sns:Publish. The following policy
+allows SNS publish to SMS but not topics or endpoints.
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sns:Publish"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Effect": "Deny",
+            "Action": [
+                "sns:Publish"
+            ],
+            "Resource": [
+                "arn:aws:sns:*:*:*"
+            ]
+        }
+    ]
+}
+
+The following JSON template shows what is sent as the payload:
+{
+    "serialNumber": "GXXXXXXXXXXXXXXXXX",
+    "batteryVoltage": "xxmV",
+    "clickType": "SINGLE" | "DOUBLE" | "LONG"
+}
+
+A "LONG" clickType is sent if the first press lasts longer than 1.5 seconds.
+"SINGLE" and "DOUBLE" clickType payloads are sent for short clicks.
+
+NOTE:  if event['clickType'] == 'SINGLE' would check for single, etc. 
+
+For more documentation, follow the link below.
+http://docs.aws.amazon.com/iot/latest/developerguide/iot-lambda-rule.html
+'''
+
+from __future__ import print_function
+
+import boto3
+import json
+import logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+sns = boto3.client('sns')
+dynamo = boto3.client('dynamodb')
+table = dynamo.scan(TableName='contact_info')
+
+#-------------------------------------------------------------------------------
+#                        publish(name, num, mes, sender)
+# 
+# The SNS method that sends an SMS (mes) to a recipient (name) w/ number (num), 
+# from the orignal sender (sender).  The format looks strange here, but this is 
+# to make sure it indents properly
+#
+#-------------------------------------------------------------------------------
+def publish(name, num, mes, sender):
+    #BEGIN MESSAGE
+    mes = """From: {0}
+To: {1}
+            
+{2}
+        
+*Sent via AWS IoT button*""".format(sender, name, mes);
+    #END MESSAGE
+    #publishing the 'mes' using 'num'
+    sns.publish(PhoneNumber=num, Message=mes);
+    logger.info('SMS has been sent to ' + name + ' from ' + sender);
+
+#-------------------------------------------------------------------------------
+#                         lambda_handler(event, context)
+# 
+# The lambda handler method.  This is what is invoked by lambda.  It retrieves
+# the information from the database 'contact_info' and sends an SMS to all of 
+# the contacts.
+#
+#-------------------------------------------------------------------------------
+def lambda_handler(event, context):
+    logger.info('Received event: ' + json.dumps(event))
+    
+    # Sending messages to all contacts in DB. The "val['S']" is a workaround 
+    # to access the values of the keys since DynamoDB always stores the values 
+    # (unfortunately) as ['data_type', 'val'].  This also means that the data 
+    # type has to be checked on contacts 2 & 3 to check for Null since these
+    # fields can be left optionally blank
+    for item in table['Items']:
+        logger.info(item)
+        for key, val in item.items():
+            if key == 'c1Num':
+                c1Num = val['S']
+            elif key == 'c1Name':
+                c1Name = val['S']
+            elif key == 'c2Num':
+                if 'NULL' in val:
+                    c2Num = False;
+                else:
+                    c2Num = val['S']
+            elif key == 'c2Name':
+                if 'NULL' in val:
+                    c2Name = False;
+                else:
+                    c2Name = val['S']
+            elif key == 'c3Num':
+                if 'NULL' in val:
+                    c3Num = False;
+                else:
+                    c3Num = val['S']
+            elif key == 'c3Name':
+                if 'NULL' in val:
+                    c3Name = False;
+                else:
+                    c3Name = val['S']
+            elif key == 'message':
+                message = val['S']
+            elif key == 'username':
+                username = val['S']
+        
+        #To ensure proper delivery, we publish separately w/ each name/num pair
+        publish(c1Name, c1Num, message, username)
+        if c2Name and c2Num:
+            publish(c2Name, c2Num, message, username)
+        if c3Name and c3Num:
+            publish(c3Name, c3Num, message, username)

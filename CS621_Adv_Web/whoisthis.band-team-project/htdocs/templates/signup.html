@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Whoisthis.band</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='reset.css') }}" >
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" >
+	<link href="https://fonts.googleapis.com/css?family=Audiowide|Permanent+Marker" rel="stylesheet">
+	<link rel="shortcut icon" href="">
+</head>
+
+<body>
+	<header>
+		<div class="container">
+			<h3 id="signup_title">Already a member?  <a id="sign_in_here" href="/search">Sign in here!</a></h3>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+			<h1><a class="back_to_index" href="/index">whoisthis.band</a></h1>
+			<div class="welcome_content">
+				{% if login_taken %}
+					<h2 id="invalid">Login name already taken</h2>
+				{% endif %}
+				{% if empty_fields %}
+					<h2 id="invalid">Error:  please fill out the fields</h2>
+				{% endif %}
+				<form value="form" action="{{ url_for('login') }}" method="post">
+					<label id="username_label" for="username">Username: </label>
+					<input id="username_bar" type="text" name="username"><br>
+					<label id="password_label" for="password">Password: </label>
+					<input id="password_bar" type="text" name="password"><br>
+					<div id="signup_button_box">
+						<input id="search_button" type="submit" value="Submit"/> <input 
+							id="reset_button" type="reset" value="Reset "/>
+					</div>
+				</form>
+			</div>
+		</div>
+	</main>
+	
+	<footer>
+		<div class="container">
+		</div>
+	</footer>
+	<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="../static/app.js"></script>
+</body>
+</html>

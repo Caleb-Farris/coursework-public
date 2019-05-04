@@ -1,0 +1,47 @@
+{
+  "status": "error",
+  "tool": "jslint",
+  "error": [
+    {
+      "name": "JSLintError",
+      "column": 4,
+      "line": 3,
+      "code": "expected_a_before_b",
+      "a": "use strict",
+      "b": "var",
+      "message": "Expected 'use strict' before 'var'."
+    },
+    {
+      "name": "JSLintError",
+      "column": 8,
+      "line": 3,
+      "code": "unused_a",
+      "a": "x",
+      "message": "Unused 'x'."
+    },
+    {
+      "name": "JSLintError",
+      "column": 15,
+      "line": 3,
+      "code": "unused_a",
+      "a": "y",
+      "message": "Unused 'y'."
+    },
+    {
+      "name": "JSLintError",
+      "column": 4,
+      "line": 4,
+      "code": "undeclared_a",
+      "a": "console",
+      "message": "Undeclared 'console'."
+    },
+    {
+      "name": "JSLintError",
+      "column": 16,
+      "line": 4,
+      "code": "unexpected_a",
+      "a": "eval",
+      "message": "Unexpected 'eval'."
+    }
+  ]
+}

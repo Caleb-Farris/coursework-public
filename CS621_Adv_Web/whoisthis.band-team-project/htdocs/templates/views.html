@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Whoisthis.band</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='reset.css') }}" >
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='views_style.css') }}" >
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Lobster|Merriweather|Permanent+Marker" rel="stylesheet">
+	<link rel="shortcut icon" href="">
+</head>
+
+<body>
+	<header>
+		<div class="container">
+            <span id="view_title">Views:  {{user}}</span>
+            <nav>
+                <ul>
+                    <li id="search"><a class="sitemap" href="/search">Search</a></li>
+                </ul>
+            </nav>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+            <table>
+                <tr>
+                    <th>View No.</th>
+                    <th>Artist</th>
+                    <th>Date</th>
+                    <th>Popularity</th>
+                </tr>
+
+                {% for view in views['views'] %}
+                    <tr>
+                        <td><a href="{{url_for('results', view_id=view['viewId'])}}">{{view['viewId']}}</a></td>
+                        <td><a href="{{url_for('results', view_id=view['viewId'])}}">{{view['artistName']}}</a></td>
+                        <td><a href="{{url_for('results', view_id=view['viewId'])}}">{{view['date']}}</a></td>
+                        <td><a href="{{url_for('results', view_id=view['viewId'])}}">{{view['popularity']}}</a></td>
+                    </tr>        
+                {% endfor %}
+            </table>
+		</div>
+	</main>
+	
+	<footer>
+	</footer>
+
+    <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="../static/app.js"></script>
+</body>
+</html>

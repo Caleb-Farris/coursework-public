@@ -1,0 +1,56 @@
+'use strict';
+
+console.log('Loading function');
+
+var AWS = require('aws-sdk');
+AWS.config.update({region: 'us-east-1'});
+
+var docClient = new AWS.DynamoDB.DocumentClient(),
+    sos = "SOS!!!  Please send help!";
+    
+//-------------------------------------------------------------------------
+//							  UUID GENERATOR
+//-------------------------------------------------------------------------
+var uuid = function () { 
+	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, 
+	function(c) {
+      	var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+      	return v.toString(16);
+  	});
+};
+
+//-------------------------------------------------------------------------
+//							  LAMBDA HANDLER
+//-------------------------------------------------------------------------
+exports.handler = (event, context, callback) => {
+    // setting up the parameters for the table 
+	// NOTE:  dynamo can't accept emptry strings for attr, so if the user
+	// does not enter info for 2nd and 3rd contacts, these fields must be 
+	// changed to null
+	var params = {
+        TableName :"contact_info",
+        Item:{
+        	"user_ID" :  uuid(),
+            "username":  event.key1.username,
+            "c1Name"  :  event.key1.c1Name, 
+            "c1Num"   :  event.key1.c1Num,
+			"c2Name"  :  event.key1.c2Name === "" ? null : event.key1.c2Name, 
+			"c2Num"   :  event.key1.c2Num === "" ? null : event.key1.c2Num,
+			"c3Name"  :  event.key1.c3Name === "" ? null : event.key1.c3Name, 
+			"c3Num"   :  event.key1.c3Num === "" ? null : event.key1.c3Num, 
+            "message" :  event.key1.message === "" ? sos : event.key1.message
+        }
+    };
+    
+    //placing the item into the table @ DynamoDB
+    docClient.put(params, function(err, data) {
+        if (err) {            	
+        	console.log(err);
+        } else {            	
+        	console.log(data);
+        }
+    });
+    
+    callback(null, event.key1);  // Echo back the first key value
+};
+

@@ -1,0 +1,1 @@
+{"virtualbox":{"/var/www/html":{"guestpath":"/var/www/html","hostpath":"/Users/caleb/FINAL_whoisthisband/whoisthis.band-team-project","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/caleb/FINAL_whoisthisband/whoisthis.band-team-project","disabled":false,"__vagrantfile":true}}}

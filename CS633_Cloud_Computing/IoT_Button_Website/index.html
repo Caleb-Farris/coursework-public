@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CS633 Cloud Computing</title>
+	<link rel="stylesheet" type="text/css" href="styles/reset.css"> 
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<div class="container">
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+			<h1>Please fill out the following information and submit</h1>
+			<h2>Enter your name: <input class="username" type="text" 
+				placeholder="*Required"></h2>
+			<h2>Contact1 Name: <input class="c1Name" type="text"
+				placeholder="*Required"></h2>
+			<h2>Contact1 Number: <input class="c1Num" type="text" 
+				placeholder="*Required  x-xxx-xxx-xxxx" maxlength="16"></h2>
+			<h2>Contact2 Name: <input class="c2Name" type="text"></h2>
+			<h2>Contact2 Number: <input class="c2Num" type="text" 
+				placeholder="Ex:  x-xxx-xxx-xxxx" maxlength="16"></h2>
+			<h2>Contact3 Name: <input class="c3Name" type="text"></h2>
+			<h2>Contact3 Number: <input class="c3Num" type="text" 
+				placeholder="Ex:  x-xxx-xxx-xxxx" maxlength="16"></h2>
+			<h2>Message:  <input class="message" type="text" 
+				placeholder="DEFAULT:  'SOS!!!  Please send help!'" 
+				maxlength="200"></h2>
+			<button class="cancel">cancel</button> <button class="submit">submit</button>
+		</div>
+	</main>
+
+	<footer>
+		<div class="container">
+			<!--<div class="caption"></div>-->
+		</div>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.77.0.min.js"></script>
+	<script src="scripts/jquery.maskedinput.js" type="text/javascript"></script>
+	<script src="scripts/app.js"></script>
+</body>
+</html>

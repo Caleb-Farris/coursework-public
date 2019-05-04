@@ -1,0 +1,268 @@
+@import url("resp_images.css");
+
+/* 
+    whoisthis.band - style.css 
+    Caleb Farris, Matthew Jackson 
+    David Parsons, Dongho Jeon 
+*/
+
+header, main, footer {
+  display: block;
+  min-width: 800px;
+}
+
+header .container, main .container, footer .container {
+  max-width: 800px;
+  margin: auto;
+}
+
+/*-----------------------------------------------------------------------------
+//								HEADER ALIGN
+//---------------------------------------------------------------------------*/
+
+header {
+	background:  green;
+	height:  80px;
+	position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+header .container {
+	width:  800px;
+	height:  100px;
+}
+
+h1 {
+	color:  green;
+	display:  inline-block;
+	float:  left;
+	font-family: 'Merriweather', serif;
+	font-weight: 900;
+	font-size:  3.5em;
+	line-height: 1.5em;
+	margin-top:  50px;
+	text-align: left;
+	width:  700px;
+	height:  90px;
+}
+
+#current_view {
+	color:  black;
+	font-family:  'Permanent Marker', cursive;
+	font-size:  2.4em;
+	height:  100px;
+	line-height: 2.5em;
+	position:  absolute;
+	text-align:  left;
+	width:  650px;
+}
+
+nav {
+	color:  black;
+	font-family:  'Permanent Marker', cursive;
+	font-size:  1.5em;
+	float:  right;
+	line-height: 2.0em;
+	margin-left:  650px;
+	text-align:  right;
+	height:  80px;
+	width:  150px;
+	position:  absolute;
+
+}
+
+#search {
+	height:  35px;
+	margin-top:  5px;
+}
+
+#user_views {
+	height:  50px;
+	line-height: 1.6em;
+	margin-bottom:  5px;
+}
+
+.sitemap {
+	color:  black;
+	text-decoration: none;
+}
+
+.sitemap:hover {
+  	text-decoration: underline;
+}
+
+
+/*-----------------------------------------------------------------------------
+//								MAIN ALIGN
+//---------------------------------------------------------------------------*/
+
+.popularity {
+	float:  right;
+	margin-top:  50px;
+	width:  100px;
+	height:  90px;
+}
+
+.popularity h1 {
+	color:  red;
+	display:  inline-block;
+	font-family:  'Lobster', cursive;
+	font-size:  5.6em;
+	line-height:  .75em;
+	margin-top:  0px;
+	width:  100px;
+}
+
+.cover_art {
+	display:  block;
+	float:  left;
+	width:  114px;
+	height:  384px;
+	margin-top:  16px;
+}
+
+#cover_images {
+	display:  block;
+	height:  114px;
+	margin-top:  14px;
+	width:  114px;
+}
+
+.tracks {
+	display:  inline-block;
+	max-width:  456px;
+	height:  370px;
+	margin-left:  30px;
+	margin-top:  30px;
+}
+
+#music_box1, #music_box2 {
+	height:  114px;
+	width:  456px;
+	margin-bottom:  14px;
+}
+
+#music_box3 {
+	height:  114px;
+	width:  456px;
+}
+
+.album_box {
+	height:  50px;
+	width:  inherit;
+}
+
+.album {
+	color:  red;
+	font-family: 'Audiowide', cursive;
+	font-size:  1.5em;
+}
+
+.track {
+	color:  green;
+	font-family: 'Audiowide', cursive;
+	font-size:  1.3em;
+	padding-top:  20px;
+}
+
+.previews {
+	display:  inline-block;
+	float:  right;
+	height:  370px;
+	margin-top:  30px;
+	max-width:  170px;
+	position:  relative;
+}
+
+.boombox {
+	padding-top:  18px;
+	height:  80px;
+	width:  160px;
+}
+
+#boombox1, #boombox2 {
+	height:  114px;
+	width:  170px;
+	margin-bottom:  14px;
+}
+
+#boombox3 {
+	height:  114px;
+	width:  170px;
+}
+
+#redX1 {
+	position:  absolute;
+	height:  75px;
+	width:  75px;
+	margin: -158px 0 0 -42px;
+    left: 50%;
+    top: 50%;
+}
+
+#redX2 {
+	position:  absolute;
+	height:  75px;
+	width:  75px;
+	margin: -30px 0 0 -42px;
+    left: 50%;
+    top: 50%;
+}
+
+#redX3 {
+	position:  absolute;
+	height:  75px;
+	width:  75px;
+	margin: 98px 0 0 -42px;
+    left: 50%;
+    top: 50%;
+}
+
+#tweets {
+	display:  inline-block;	
+}
+
+#tweet1 {
+	margin-top: 40px;
+	margin-left: 150px;
+}
+
+#tweet2, #tweet3 {
+	margin-left: 150px;
+}
+
+blockquote.twitter-tweet {
+  display: inline-block;
+  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 16px;
+  border-color: #eee #ddd #bbb;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  margin: 10px 5px;
+  padding: 0 16px 16px 16px;
+  max-width: 468px;
+}
+
+blockquote.twitter-tweet p {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 20px;
+}
+
+blockquote.twitter-tweet a {
+  color: inherit;
+  font-weight: normal;
+  text-decoration: none;
+  outline: 0 none;
+}
+
+blockquote.twitter-tweet a:hover,
+blockquote.twitter-tweet a:focus {
+  text-decoration: underline;
+}

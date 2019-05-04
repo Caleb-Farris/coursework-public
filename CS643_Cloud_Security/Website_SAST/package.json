@@ -1,0 +1,83 @@
+{
+  "name": "yes",
+  "version": "1.0.0",
+  "description": "node test desc",
+  "main": "server_fileupload.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server_ui.js & node server_eslint.js & node server_jslint.js & node server_jshint.js & node server_jsprime.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.5.0",
+    "body-parser": "^1.18.2",
+    "eslint": "^4.11.0",
+    "eslint-plugin-no-unsafe-innerhtml": "^1.0.16",
+    "eslint-plugin-scanjs-rules": "^0.2.1",
+    "express": "^4.16.2",
+    "formidable": "^1.1.1",
+    "jshint": "^2.9.5",
+    "jslint": "^0.11.0",
+    "multer": "^1.3.0",
+    "properties-reader": "0.0.16",
+    "request": "^2.83.0",
+    "require": "^2.4.20",
+    "retire": "^1.4.0",
+    "scanjs": "^1.1.4"
+  },
+  "eslintConfig": {
+    "ecmaFeatures": {
+      "modules": true
+    },
+    "env": {
+      "browser": true,
+      "mocha": true,
+      "es6": true
+    },
+    "plugins": [
+      "scanjs-rules",
+      "no-unsafe-innerhtml"
+    ],
+    "extends": "eslint:recommended",
+    "rules": {
+      "semi": 2,
+      "no-unsafe-innerhtml/no-unsafe-innerhtml": 2,
+      "scanjs-rules/accidental_assignment": 1,
+      "scanjs-rules/assign_to_hostname": 1,
+      "scanjs-rules/assign_to_href": 1,
+      "scanjs-rules/assign_to_location": 1,
+      "scanjs-rules/assign_to_onmessage": 1,
+      "scanjs-rules/assign_to_pathname": 1,
+      "scanjs-rules/assign_to_protocol": 1,
+      "scanjs-rules/assign_to_search": 1,
+      "scanjs-rules/assign_to_src": 1,
+      "scanjs-rules/call_Function": 1,
+      "scanjs-rules/call_addEventListener": 1,
+      "scanjs-rules/call_addEventListener_deviceproximity": 1,
+      "scanjs-rules/call_addEventListener_message": 1,
+      "scanjs-rules/call_connect": 1,
+      "scanjs-rules/call_eval": 1,
+      "scanjs-rules/call_execScript": 1,
+      "scanjs-rules/call_hide": 1,
+      "scanjs-rules/call_open_remote=true": 1,
+      "scanjs-rules/call_parseFromString": 1,
+      "scanjs-rules/call_setImmediate": 1,
+      "scanjs-rules/call_setInterval": 1,
+      "scanjs-rules/call_setTimeout": 1,
+      "scanjs-rules/identifier_indexedDB": 1,
+      "scanjs-rules/identifier_localStorage": 1,
+      "scanjs-rules/identifier_sessionStorage": 1,
+      "scanjs-rules/new_Function": 1,
+      "scanjs-rules/property_addIdleObserver": 1,
+      "scanjs-rules/property_createContextualFragment": 1,
+      "scanjs-rules/property_crypto": 1,
+      "scanjs-rules/property_geolocation": 1,
+      "scanjs-rules/property_getUserMedia": 1,
+      "scanjs-rules/property_indexedDB": 1,
+      "scanjs-rules/property_localStorage": 1,
+      "scanjs-rules/property_mgmt": 1,
+      "scanjs-rules/property_sessionStorage": 1
+    }
+  }
+}

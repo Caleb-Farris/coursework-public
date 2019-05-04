@@ -1,0 +1,33 @@
+{
+  "status": "ok",
+  "tool": "eslint",
+  "result": {
+    "results": [
+      {
+        "filePath": "/home/mashiur/projects/node-test/62b34cac51c74263617a8d56c54d6c14",
+        "messages": [
+          {
+            "ruleId": "scanjs-rules/call_eval",
+            "severity": 1,
+            "message": "The function eval can be unsafe",
+            "line": 5,
+            "column": 17,
+            "nodeType": "CallExpression",
+            "source": "    console.log(eval('x + y'));",
+            "endLine": 5,
+            "endColumn": 30
+          }
+        ],
+        "errorCount": 0,
+        "warningCount": 1,
+        "fixableErrorCount": 0,
+        "fixableWarningCount": 0,
+        "source": "/*1*/\n\nfunction test() {\n    var x = 2, y = 4;\n    console.log(eval('x + y'));\n}"
+      }
+    ],
+    "errorCount": 0,
+    "warningCount": 1,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  }
+}

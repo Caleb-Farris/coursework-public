@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Whoisthis.band</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='reset.css') }}" >
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" >
+	<link href="https://fonts.googleapis.com/css?family=Audiowide|Permanent+Marker" rel="stylesheet">
+	<link rel="shortcut icon" href="">
+</head>
+
+<body>
+	<header>
+		<div class="container">
+			<h3 id="search_title">Welcome {{user}}!</h3>
+            <nav>
+                <ul>
+                    <li id="user_views"><a class="sitemap" href="/views">User Views</a></li>
+                </ul>
+            </nav>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+			<h1><a class="back_to_index" href="/index">whoisthis.band</a></h1>
+			<div class="loading"></div>
+			<div class="content">
+				{% if flag %}
+					<h2 id="invalid">Invalid band name.  Please try again.</h2>
+				{% endif %}
+				<h2 id="discover">Discover new bands!</h2>
+				<form value="form" action="{{ url_for('results', view_id=0) }}" method="post">
+					<input id="search_bar" type="text" name="inputVal"><br>
+					<div id="button_box">
+						<input id="search_button" type="submit" value="Search"/> <input 
+							id="reset_button" type="reset" value="Reset "/>
+					</div>
+				</form>
+			</div>
+		</div>
+	</main>
+	
+	<footer>
+		<div class="container">
+		</div>
+	</footer>
+	<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="../static/app.js"></script>
+</body>
+</html>

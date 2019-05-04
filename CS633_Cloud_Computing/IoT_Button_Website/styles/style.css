@@ -1,0 +1,121 @@
+/*-----------------------------------------------------------------------------
+//								SIZING & FONT
+//---------------------------------------------------------------------------*/
+body {
+	background:  blue;
+	font-family: 'Oswald', sans-serif;
+	font-size:  100%;
+}
+
+header, main, footer {
+	min-width:  600px;
+}
+
+header .container, main .container, footer .container { 
+	margin: auto;
+	max-width: 600px;
+}
+
+h1 {
+	font-family:  'Oswald', sans-serif;
+	font-size:  2.8em;
+	text-align: center;
+	margin:  auto;
+	margin-bottom:  35px;
+}
+
+h2 {
+	font-family: 'Oswald', sans-serif;
+	font-size:  1.8em;
+	margin:  7px;
+}
+
+h3 {
+	font-family:  'Oswald', sans-serif;
+	font-size:  2.5em;
+	text-align: center;
+	margin:  15px;
+}
+
+/*-----------------------------------------------------------------------------
+//								HEADER ALIGN
+//---------------------------------------------------------------------------*/
+header {
+	margin-bottom:  125px; 
+	overflow: auto;
+}
+
+/*-----------------------------------------------------------------------------
+//								MAIN ALIGN
+//---------------------------------------------------------------------------*/
+main {
+	overflow: auto;
+}
+
+main .container {
+	background:  #f9e933;
+	border:  6px solid black;
+	border-radius: 40px;
+	margin: auto;
+	padding-top:  80px;
+	padding-right: 80px;
+	padding-left: 80px;
+	padding-bottom: 100px;
+	width:  600px;
+}
+
+main input {
+	float: right;
+	border-color: black;
+	border-radius: 8px;
+	height:  20px;
+	width:  340px;
+	margin-top:  2px;
+}
+
+main p {
+	font:  .4em;
+}
+
+.cancel {
+	margin-top:  35px;
+	margin-bottom:  80px;
+	margin-left:  150px;
+	float:  left;
+	background-color:  #D7DBDD; 
+    border:  2px solid black;
+    border-radius: 8px;
+    color: black;	
+    font-size: 15px;
+    padding: 3.0px 10px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.submit {
+	margin-top: 35px;
+	margin-bottom:  80px;
+	margin-right:  175px;
+	float:  right;
+	background-color:  #D7DBDD; 
+    border:  2px solid black;
+    border-radius: 8px;
+    color: black;	
+    font-size: 15px;
+    padding: 3.0px 10px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/*---------------------------------------------------------------------------
+//								FOOTER ALIGN
+//---------------------------------------------------------------------------*/
+footer {
+	overflow:  auto;
+}
+
+.alert {
+	text-align: center;
+	font-size:  2.1em;
+	font:  bold;
+}

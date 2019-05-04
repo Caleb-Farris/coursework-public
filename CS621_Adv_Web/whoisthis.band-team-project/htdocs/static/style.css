@@ -1,0 +1,847 @@
+/* 
+    whoisthis.band - style.css 
+    Caleb Farris, Matthew Jackson 
+    David Parsons, Dongho Jeon 
+*/
+
+body {
+	background: linear-gradient(
+        rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),  url('images/con4032.jpg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+	font-size:  100%;
+}
+
+header, main, footer {
+	display:  block;
+    min-width:  800px;
+}
+
+header .container, main .container, footer .container {
+	margin:  auto;
+    max-width: 800px;
+}
+
+header {
+    background:  green;
+    height:  80px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+header .container {
+    height:  100px;
+    width:  800px;
+}
+
+#index_title {
+    color:  black;
+    font-family:  'Permanent Marker', cursive;
+    font-size:  3.0em;
+    position:  absolute;
+    line-height: 2.1em;
+    text-align:  left;
+    width:  665px;
+}
+
+#signup_title {
+    color:  black;
+    font-family:  'Permanent Marker', cursive;
+    font-size:  2.9em;
+    position:  absolute;
+    line-height: 2.13em;
+    text-align:  center;
+    width:  800px;
+}
+
+#search_title {
+    color:  black;
+    font-family:  'Permanent Marker', cursive;
+    font-size:  3.3em;
+    position:  absolute;
+    line-height: 1.8em;
+    text-align:  center;
+    width:  800px;
+}
+
+nav {
+    color:  black;
+    font-family:  'Permanent Marker', cursive;
+    font-size:  1.5em;
+    line-height: 5.0em;
+    margin-left:  665px;
+    position: absolute;
+    text-align:  right;
+    width:  130px;
+}
+
+#sign_up_now:link {
+    color:  inherit;
+    text-decoration: none;
+}
+
+#sign_up_now:hover {
+    text-decoration: underline;
+}
+
+#sign_up_now:visited {
+    color:  inherit;
+}
+
+#sign_in_here:link {
+    color:  inherit;
+    text-decoration: none;
+}
+
+#sign_in_here:hover {
+    text-decoration: underline;
+}
+
+#sign_in_here:visited {
+    color:  inherit;
+}
+
+.sitemap {
+    color:  black;
+    text-decoration: none;  
+}
+
+.sitemap:link {
+    color:  inherit;
+    text-decoration: none;
+}
+
+.sitemap:hover {
+    text-decoration: underline;
+}
+
+.sitemap:visited {
+    color:  inherit;
+}
+
+.back_to_index:link {
+    color:  inherit;
+    text-decoration: none;
+}
+
+.back_to_index:hover {
+    text-decoration: none;
+}
+
+.back_to_index:visited {
+    color:  inherit;
+}
+
+#user_views {
+    height:  60px;
+}
+
+.sign_in {
+    font-size:  1.52em;
+    line-height:  3.1em;
+}
+
+/*-----------------------------------------------------------------------------
+//								MAIN ALIGN
+//---------------------------------------------------------------------------*/
+
+main .container {
+    margin-top: 170px;
+}
+
+h1 {
+    color:  green;
+    font-weight: 900;
+    font-size:  6.0em;
+    text-align: center;
+}
+
+#intro {
+    color:  orange;
+    font-family: 'Source Code Pro', monospace;
+    font-weight:  700;
+    font-size:  1.7em;
+    margin-top:  80px;
+    text-align:  center;
+}
+
+.welcome_content {
+    height: 500px;
+    margin:  auto;
+    margin-left: 150px;
+    width:  500px;
+}
+
+#welcome_click_sign_up:link {
+    color:  inherit;
+    text-decoration: none;
+}
+
+#welcome_click_sign_up:vistited {
+    color:  inherit;
+}
+
+#welcome_click_sign_up:hover {
+    color:  inherit;
+}
+
+.content {
+    height: 300px;
+    margin:  auto;
+    margin-left: 250px;
+    width:  300px;
+}
+
+#discover {
+    color:  green;
+    font-weight: 700;
+    font-size:  1.9em;
+    margin-top: 70px;
+    text-align:  center;
+}
+
+form {
+    margin:  auto;
+}
+
+#search_bar {
+    border-radius: 20px;
+    margin-left: 41px;
+    margin-top:  40px;
+    width:  210px;
+}
+
+#username_label {
+    color:  orange;
+    margin-left:  85px;
+}
+
+#username_bar {
+    border-radius: 20px;
+    margin-top:  50px;
+    width:  250px;
+}
+
+#password_label {
+    color:  orange;
+    margin-left:  88px;
+}
+
+#password_bar {
+    border-radius: 20px;
+    margin-top:  35px;
+    width:  250px;
+}
+
+#button_box {
+    margin-left: 44px;
+    margin-top:  18px;
+}
+
+#signup_button_box {
+    margin-left: 165px;
+    margin-top:  25px;
+}
+
+#search_button {
+    border-radius: 5px;
+    margin-left: 42.63px;
+}
+
+#reset_button {
+    border-radius:  5px;
+    margin-left:  20px;
+    width:  52.25px;
+}
+
+.loading {
+    background: url(images/pacman151.gif) no-repeat;
+    cursor: wait;
+    display: none;
+    height: 151px;
+    width: 151px;
+    margin-left: 324.5px;
+    margin-top:  120px;
+    z-index: 1000;
+}
+
+#invalid {
+    color:  red;
+    display:  block;
+    margin:  0 auto;
+    text-align: center;
+    font-size:  1.28em;
+}   
+
+/*
+    DEFAULT is optimized for screens sized 800-1200 (or 400-600 retina)
+ */
+
+/*------------------------------------------------------------------------------
+    Normal, non-retina screens
+------------------------------------------------------------------------------*/
+
+@media only screen and (min-width: 1281px) and (max-width: 1920px) {
+    body { 
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),  url('images/con1920.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size:  100%;
+    }  
+}
+
+@media only screen and (min-width: 641px) and (max-width: 1280px) {
+    body { 
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),  url('images/con1280.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size:  100%;
+    }
+ }
+
+@media only screen and (max-width: 640px) {
+    body { 
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),  url('images/con640.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size:  100%;
+    }
+}
+
+/*------------------------------------------------------------------------------
+    END NORMAL, non-retina screens
+------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
+    RETINA SCREENS
+------------------------------------------------------------------------------*/
+
+@media only screen and (min-resolution: 2dppx) and (min-width: 961px) {
+    body { 
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),  url('images/con4032.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size:  100%;
+    }  
+}
+
+@media only screen and (min-resolution: 2dppx) 
+and (min-width: 641px) and (max-width: 960px) {
+    body { 
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),  url('images/con1920.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size:  100%;
+    }
+ }
+
+@media only screen and (min-resolution: 2dppx) 
+and (min-width: 321px) and (max-width: 640px) {
+    body { 
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),  url('images/con1280.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size:  100%;
+    }
+ }
+
+ @media only screen and (min-resolution: 2dppx) and (max-width: 320px) {
+    body {
+        background: linear-gradient( 
+            rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),  url('images/con640.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size:  100%;
+    }
+}
+
+/*------------------------------------------------------------------------------
+    END RETINA SCREENS
+------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
+    MEDIA QUERIES FOR FURTHER OPTIMIZATIONS
+------------------------------------------------------------------------------*/
+
+@media only screen and (min-width:  601px) and (max-width: 800px), only screen 
+    and (min-resolution: 2dppx) and (min-width: 300.5px) and (max-width: 400px) {
+
+    header {
+        height:  65px;
+    }
+
+    #index_title {
+        font-size:  2.3em;
+        line-height: 2.4em;
+        width:  470px;
+    }
+
+    #signup_title {
+        font-size:  2.2em;
+        line-height: 2.4em;
+        width:  601px;
+    }
+
+    #search_title {
+        font-size:  2.7em;
+        line-height: 1.8em;
+        text-align:  left;
+        width:  470px;
+    }
+
+    nav {
+        line-height: 4.8em;
+        margin-left:  470px;
+    }
+
+    .sign_in {
+        font-size:  1.2em;
+        line-height:  3.3em;
+    }
+
+    #user_views {
+        line-height: 4.03em;
+    }
+
+    #intro {
+        font-size:  1.7em;
+        margin-top:  80px;
+        text-align:  center;
+    }
+
+    .welcome_content {
+        height: 400px;
+        margin-left: 100px;
+        width:  400px;
+    }
+
+    header, main, footer {
+        min-width: 601px;
+    }
+
+    header .container, main .container, footer .container {
+        max-width: 601px;
+    }
+
+    h1 {
+        font-size: 4.6em;
+    }
+
+    main .container {
+        margin-top:  155px;
+    }
+
+    #discover {
+        font-size: 1.7em;
+    }
+
+    .content {
+        margin-left: 150.5px;
+    }
+
+    #search_bar {
+        margin-left: 46px;
+        width:  200px;
+    }
+
+    #username_label {
+        margin-left:  63px;
+    }
+
+    #username_bar {
+        width:  195px;
+    }
+
+    #password_label {
+        margin-left:  66px;
+    }
+
+    #password_bar {
+        width:  195px;
+    }
+
+    #signup_button_box {
+        margin-left: 125px;
+    }
+
+    .loading {
+        margin-left: 225px;
+    }
+}
+
+@media only screen and (min-width:  401px) and (max-width: 600px), only screen 
+    and (min-resolution: 2dppx) and (min-width:  200.5px) and (max-width: 300px) {
+    header {
+        height:  50px;
+    }
+
+    #index_title {
+        font-size:  1.4em;
+        line-height: 3.2em;
+        width:  270px;
+    }
+
+    #signup_title {
+        font-size:  1.5em;
+        line-height: 2.8em;
+        width:  401px;
+    }
+
+    #search_title {
+        font-size:  1.7em;
+        line-height: 2.4em;
+        text-align:  left;
+        width:  270px;
+    }
+
+    nav {
+        font-size: 1.1em;
+        margin-left: 270px;
+        line-height: 3.8em;
+    }
+
+    .sign_in {
+        font-size:  1.1em;
+        line-height:  3.9em;
+    }
+
+    #user_views {
+        line-height: 4.27em;
+    }
+
+    #intro {
+        font-size:  1.4em;
+        margin-top:  50px;
+        text-align:  center;
+    }
+
+    .welcome_content {
+        height: 300px;
+        margin-left: 50px;
+        width:  300px;
+    }
+
+    header, main, footer {
+        min-width: 401px;
+    }
+
+    header .container, main .container, footer .container {
+        max-width: 401px;
+    }
+
+    h1 {
+        font-size: 3.6em;
+    }
+
+    main .container {
+        margin-top:  120px;
+    }
+
+    #discover {
+        font-size: 1.5em;
+    }
+
+    .content {
+        margin-left: 50.5px;
+    }
+
+    #search_bar {
+        margin-left: 56px;
+        width:  180px;
+    }
+
+    #username_label {
+        margin-left:  39px;
+    }
+
+    #username_bar {
+        width:  144px;
+    }
+
+    #password_label {
+        margin-left:  42px;
+    }
+
+    #password_bar {
+        width:  144px;
+    }
+
+    #signup_button_box {
+        margin-left: 47px;
+    }
+
+    .loading {
+        margin-left: 125px;
+    }
+}
+
+@media  only screen and (min-width:  321px) and (max-width: 400px), only screen 
+    and (min-resolution: 2dppx) and (min-width:  160.5px) and (max-width: 200px) {
+    header {
+        height: 40px;
+    }
+
+    #index_title {
+        font-size:  1.15em;
+        line-height: 3.1em;
+        width:  240px;
+    }
+
+    #signup_title {
+        font-size:  1.2em;
+        line-height: 2.8em;
+        width:  321px;
+    }
+
+    #search_title {
+        font-size:  1.3em;
+        line-height: 2.5em;
+        text-align:  left;
+        width:  240px;
+    }
+
+    nav {
+        font-size: 0.8em;
+        line-height: 4.3em;
+        margin-left: 240px;
+        width:  80px;
+    }
+
+    .sign_in {
+        font-size:  1.25em;
+        line-height:  3.7em;
+    }
+
+    #user_views {
+        line-height: 4.8em;
+    }
+
+    #intro {
+        font-size:  1.09em;
+        margin-top:  40px;
+        text-align:  center;
+    }
+
+    .welcome_content {
+        height: 221px;
+        margin-left: 50px;
+        width:  221px;
+    }
+
+    header, main, footer {
+        min-width: 321px;
+    }
+
+    header .container, main .container, footer .container {
+        max-width: 321px;
+    }
+
+    h1 {
+        font-size: 2.88em;
+    }
+
+    main .container {
+        margin-top:  110px;
+    }
+
+    #discover {
+        font-size: 1.4em;
+    }
+
+    .content {
+        margin-left: 10px;
+    }
+
+    #search_bar {
+        margin-left: 66px;
+        width:  160px;
+    }
+
+    #username_label {
+        margin-left:  22px;
+    }
+
+    #username_bar {
+        width:  94px;
+    }
+
+    #password_label {
+        margin-left:  25px;
+    }
+
+    #password_bar {
+        width:  94px;
+    }
+
+    #signup_button_box {
+        margin-left: 1px;
+    }
+
+    #invalid {
+        font-size:  1.02em;
+    }  
+
+    .loading {
+        margin-left: 85px;
+        margin-top:  100px;
+    }
+}
+
+@media only screen and (max-width:  320px)
+    , only screen and (min-resolution: 2dppx) and (max-width: 160px) {
+    
+    header {
+        height: 32px;
+    }
+
+    #index_title {
+        font-size:  0.9em;
+        line-height: 3.0em;
+        width:  190px;
+    }
+
+    #signup_title {
+        font-size:  0.95em;
+        line-height: 2.87em;
+        width:  260px;
+    }
+
+    #search_title {
+        font-size:  0.99em;
+        line-height: 2.66em;
+        text-align:  left;
+        width:  190px;
+    }
+
+    nav {
+        font-size: 0.7em;
+        line-height: 3.9em;
+        margin-left: 190px;
+        width:  70px;
+    }
+
+    .sign_in {
+        font-size:  1.1em;
+        line-height:  3.7em;
+    }
+
+    #user_views {
+        line-height: 4.17em;
+    }
+
+    #intro {
+        font-size:  .9em;
+        margin-top:  40px;
+        text-align:  center;
+    }
+
+    .welcome_content {
+        height: 200px;
+        margin-left: 30px;
+        width:  200px;
+    }
+
+    header, main, footer {
+        min-width: 260px;
+    }
+
+    header .container, main .container, footer .container {
+        max-width: 260px;
+    }
+
+    h1 {
+        font-size: 2.45em;
+    }
+
+    main .container {
+        margin-top:  82px;
+    }
+
+    #discover {
+        font-size: 1.3em;
+        margin-top: 45px;
+    }
+
+    .content {
+        margin:  auto;
+        width:  260px;
+    }
+
+    #search_bar {
+        margin-left: 51px;
+        margin-top:  25px;
+        width:  150px;
+    }
+
+    #button_box {
+        margin-left: 25px;
+        margin-top:  18px;
+    }
+
+    #search_button {
+        border-radius: 5px;
+        margin-left: 42.63px;
+    }
+
+    #reset_button {
+        border-radius:  5px;
+        margin-left:  18px;
+        width:  49.37px;
+    }
+
+    #username_label {
+        margin-left:  22px;
+        font-size:  .8em;
+    }
+
+    #username_bar {
+        width:  94px;
+    }
+
+    #password_label {
+        font-size: .8em;
+        margin-left:  25px;
+    }
+
+    #password_bar {
+        width:  94px;
+    }
+
+    #signup_button_box {
+        margin-left: -3px;
+    }
+
+    #invalid {
+        font-size:  .90em;
+    }   
+
+    .loading {
+        background: url(images/pacman72.gif) no-repeat;
+        margin-left: 94px;
+        margin-top:  60px;
+    }
+}

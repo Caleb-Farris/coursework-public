@@ -1,0 +1,37 @@
+{
+  "status": "error",
+  "tool": "jshint",
+  "error": [
+    {
+      "id": "(error)",
+      "raw": "This character may get silently deleted by one or more browsers.",
+      "code": "W100",
+      "evidence": "/*1*/\n\nfunction test() {\n    var x = 2, y = 4;\n    console.log(eval('x + y'));\n}",
+      "line": 1,
+      "character": 5,
+      "scope": "(main)",
+      "reason": "This character may get silently deleted by one or more browsers."
+    },
+    {
+      "id": "(error)",
+      "raw": "eval can be harmful.",
+      "code": "W061",
+      "evidence": "/*1*/\n\nfunction test() {\n    var x = 2, y = 4;\n    console.log(eval('x + y'));\n}",
+      "line": 1,
+      "character": 64,
+      "scope": "(main)",
+      "reason": "eval can be harmful."
+    },
+    {
+      "id": "(error)",
+      "raw": "'{a}' is not defined.",
+      "code": "W117",
+      "evidence": "/*1*/\n\nfunction test() {\n    var x = 2, y = 4;\n    console.log(eval('x + y'));\n}",
+      "line": 1,
+      "character": 52,
+      "scope": "(main)",
+      "a": "console",
+      "reason": "'console' is not defined."
+    }
+  ]
+}

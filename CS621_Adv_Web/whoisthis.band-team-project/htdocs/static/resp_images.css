@@ -1,0 +1,119 @@
+/* 
+    whoisthis.band - style.css 
+    Caleb Farris, Matthew Jackson 
+    David Parsons, Dongho Jeon 
+
+    This file is for the media queries that are similar across stylesheets
+*/
+
+body {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85) ),  url('images/con4032.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    font-size:  100%;
+}
+
+/*------------------------------------------------------------------------------
+    Normal, non-retina screens
+------------------------------------------------------------------------------*/
+
+@media only screen and (min-width: 1281px) and (max-width: 1920px) {
+    body { 
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85) ),  url('images/con1920.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size:  100%;
+    }  
+}
+
+@media only screen and (min-width: 641px) and (max-width: 1280px) {
+    body { 
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85) ),  url('images/con1280.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size:  100%;
+    }
+ }
+
+@media only screen and (max-width: 640px) {
+    body { 
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85) ),  url('images/con640.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size:  100%;
+    }
+}
+
+/*------------------------------------------------------------------------------
+    END NORMAL, non-retina screens
+------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
+    RETINA SCREENS
+------------------------------------------------------------------------------*/
+
+@media only screen and (min-resolution: 2dppx) and (min-width: 961px) {
+    body { 
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85) ),  url('images/con4032.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size:  100%;
+    }  
+}
+
+@media only screen and (min-resolution: 2dppx) 
+and (min-width: 641px) and (max-width: 960px) {
+    body { 
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85) ),  url('images/con1920.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size:  100%;
+    }
+ }
+
+@media only screen and (min-resolution: 2dppx) 
+and (min-width: 321px) and (max-width: 640px) {
+    body { 
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85) ),  url('images/con1280.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size:  100%;
+    }
+ }
+
+ @media only screen and (min-resolution: 2dppx) and (max-width: 320px) {
+    body {
+        background: linear-gradient( 
+            rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85) ),  url('images/con640.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size:  100%;
+    }
+}
+
+/*------------------------------------------------------------------------------
+    END RETINA SCREENS
+------------------------------------------------------------------------------*/

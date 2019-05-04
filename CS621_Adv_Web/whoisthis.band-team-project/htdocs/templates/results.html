@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Whoisthis.band</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='reset.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='result_style.css') }}" >
+	<link href="https://fonts.googleapis.com/css?family=Audiowide|Lobster|Merriweather|Permanent+Marker" rel="stylesheet">
+	<link rel="shortcut icon" href="">
+</head>
+
+<body>
+	<header>
+		<div class="container">
+			<span id="current_view">View on {{results['date']}}</span>
+			<nav>
+				<ul>
+					<li id="search"><a class="sitemap" href="/search">Search</a></li>
+					<li id="user_views"><a class="sitemap" href="/views">User Views</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+			<h1>{{results['artist']}}</h1>
+			<div class="popularity">
+				<h1>{{results['popularity']}}</h1>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="cover_art">
+				{% for track in results['tracks'] %}
+					<img id="cover_images" src="{{track['cover_art']}}" alt="cover art">
+				{% endfor %}
+			</div>
+			<div class="tracks">
+				{% set t1,t2,t3=results['tracks'][0],results['tracks'][1],results['tracks'][2] %}
+					<div id="music_box1">
+						<div class="album_box">
+							<p class="album">{{t1['album']}}</p>
+						</div>
+						<p class="track">"{{t1['track']}}"</p>
+					</div>
+					<div id="music_box2">
+						<div class="album_box">
+							<p class="album">{{t2['album']}}</p>
+						</div>
+						<p class="track">"{{t2['track']}}"</p>
+					</div>
+					<div id="music_box3">
+						<div class="album_box">
+							<p class="album">{{t3['album']}}</p>
+						</div>
+						<p class="track">"{{t3['track']}}"</p>
+					</div>
+			</div>
+			<div class="previews">
+				{% set p1,p2,p3 = t1['preview_url'], t2['preview_url'], t3['preview_url'] %}
+					<div id="boombox1">
+						{% if p1 is none %}
+							<img class="boombox" src="{{ url_for('static', filename='images/bbox640_320.png')}}" alt="picture of boombox">
+							<img id="redX1" src="{{url_for('static', filename='images/redX.png')}}">
+						{% else %}
+							<a href="{{p1}}"><img class="boombox" src="{{ url_for('static', filename='images/bbox640_320.png')}}" alt="picture of boombox"></a>
+						{% endif %}
+					</div>
+					<div id="boombox2">
+						{% if p2 is none %}
+							<img class="boombox" src="{{ url_for('static', filename='images/bbox640_320.png')}}" alt="picture of boombox">
+							<img id="redX2" src="{{url_for('static', filename='images/redX.png')}}">
+						{% else %}
+							<a href="{{p2}}"><img class="boombox" src="{{ url_for('static', filename='images/bbox640_320.png')}}" alt="picture of boombox"></a>
+						{% endif %}
+					</div>
+					<div id="boombox3">
+						{% if p3 is none %}
+							<img class="boombox" src="{{ url_for('static', filename='images/bbox640_320.png')}}" alt="picture of boombox">
+							<img id="redX3" src="{{url_for('static', filename='images/redX.png')}}">
+						{% else %}
+							<a href="{{p3}}"><img class="boombox" src="{{ url_for('static', filename='images/bbox640_320.png')}}" alt="picture of boombox"></a>
+						{% endif %}
+					</div>
+			</div>
+
+			<div class="tweets">
+				{% for tweet in embeds %}
+                    <div id="tweet{{loop.index}}">
+                        {{tweet | safe}}
+                    </div>
+                {% endfor %}
+			</div>
+		</div>
+	</main>
+	
+	<footer>
+		<div class="container">
+		</div>
+	</footer>
+	<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="../static/app.js"></script>
+</body>
+</html>

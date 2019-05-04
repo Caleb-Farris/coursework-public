@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Whoisthis.band</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='reset.css') }}" >
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" >
+	<link href="https://fonts.googleapis.com/css?family=Audiowide|Permanent+Marker|Source+Code+Pro" rel="stylesheet">
+	<link rel="shortcut icon" href="">
+</head>
+
+<body>
+	<header>
+		<div class="container">
+			<h3 id="index_title">New user? <a id="sign_up_now" href="/signup">Sign up now!</a></h3>
+            <nav>
+                <ul>
+                    <li class="sign_in"><a class="sitemap" href="/search">Sign In</a></li>
+                </ul>
+            </nav>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+			<h1><a class="back_to_index" href="/index" >whoisthis.band</a></h1>
+			<div class="welcome_content">
+				<p id="intro"><a id="welcome_click_sign_up" href="/signup">Create an account</a></p>
+			</div>
+		</div>
+	</main>
+	
+	<footer>
+		<div class="container">
+		</div>
+	</footer>
+	<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="../static/app.js"></script>
+</body>
+</html>
